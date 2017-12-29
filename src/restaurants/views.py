@@ -1,14 +1,20 @@
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import View
+from django.views.generic import TemplateView, ListView
 
-# Create your views here.
+from .models import RestaurantLocation
 
-# function-based view
-def home(request):
-    return render(request, "home.html", {})
+class RestaurantListView(ListView):
 
-def contact(request):
-    return render(request, "contact.html", {})
-
-def about(request):
-    return render(request, "about.html", {})
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")
+        if slug:
+            queryset = RestaurantLocation.objects.filter(
+            Q(category__iexact=slug) |
+            Q(category__icontains=slug)
+            )
+        else:
+            queryset=RestaurantLocation.objects.all()
+        return queryset

@@ -10,3 +10,7 @@ https://www.youtube.com/watch?v=yDv5FIAeyoY <br/><br/>
 <p>Uses get_queryset method to return dynamic data based upon kwargs</p>
 <p>incorporates through 2:35 of the video</p>
 <br/>
+<h3>Branch detail-view-slugs</h3>
+<p>Adds restaurant detail views with URLs that use uniquely generated slugs.</p>
+<p>incorporates through 3:00 of the video</p>
+<br/>

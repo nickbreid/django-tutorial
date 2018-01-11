@@ -1,14 +1,32 @@
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 
+from .forms import RestaurantCreateForm
 from .models import RestaurantLocation
+
+def restaurant_createview(request):
+    form = RestaurantCreateForm(request.POST or None)
+    errors = None
+    if form.is_valid():
+        obj = RestaurantLocation.objects.create(
+            name = form.cleaned_data.get('name'),
+            location = form.cleaned_data.get('location'),
+            category = form.cleaned_data.get('category'),
+        )
+        return HttpResponseRedirect("/restaurants/")
+    if form.errors:
+        errors = form.errors
+    template_name = 'restaurants/form.html'
+    context = {"form": form, "errors": errors}
+    return render(request, template_name, context)
+
 
 class RestaurantListView(ListView):
     # in list views, the object variable (for use in the template)
-    #... is always object_list
+    #... is always called: object_list
     def get_queryset(self):
         slug = self.kwargs.get("slug")
         if slug:
@@ -22,7 +40,7 @@ class RestaurantListView(ListView):
 
 class RestaurantDetailView(DetailView):
     # in detail views, the object variable (for use in the template)
-    #... is always object
+    #... is always called: object
     queryset = RestaurantLocation.objects.all()
 
     # def get_object(self, *args, **kwargs):

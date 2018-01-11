@@ -16,8 +16,8 @@ class RestaurantLocation(models.Model):
 
     slug = models.SlugField(null=True, blank=True)
 
-    # this method allows us to define an object name, so it's not
-    # 'RestaurantLocation object'
+    # this method allows us to define an object name, so everything's not
+    # labeled 'RestaurantLocation object' in the admin view
     def __str__(self):
         return self.name
 

@@ -14,3 +14,7 @@ https://www.youtube.com/watch?v=yDv5FIAeyoY <br/><br/>
 <p>Adds restaurant detail views with URLs that use uniquely generated slugs.</p>
 <p>incorporates through 3:00 of the video</p>
 <br/>
+<h3>Branch adds-new-restaursnts</h3>
+<p>Adds ability to create new restaurants at `/create`/.</p>
+<p>incorporates through 3:40 of the video</p>
+<br/>

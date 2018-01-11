@@ -16,5 +16,6 @@ https://www.youtube.com/watch?v=yDv5FIAeyoY <br/><br/>
 <br/>
 <h3>Branch adds-new-restaurants</h3>
 <p>Adds ability to create new restaurants at `/create`/.</p>
-<p>incorporates through 3:40 of the video</p>
+<p>Restaurants are associated to a user and login is required.</p>
+<p>incorporates through 4:34 of the video</p>
 <br/>

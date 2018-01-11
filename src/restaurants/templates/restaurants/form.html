@@ -2,8 +2,8 @@
 {% block title %} | Add Restaurant {% endblock %}
 {% block content %}
 <h2>Add Restaurant</h2>
-{% if errors %}
-  {{ errors }}
+{% if form.errors %}
+  {{ form.errors }}
 {% endif %}
 <form method="POST"> {% csrf_token %}
   {{ form.as_p }}
